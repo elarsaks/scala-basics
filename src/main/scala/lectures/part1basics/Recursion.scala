@@ -17,9 +17,10 @@ object Recursion extends App{
   // println(aFactorialFunction((5000))) <-- THIS WILL CAUSE STACK OVERFLOW!!!
 
   def anotherFactorial(n: Int): BigInt = {
+    @scala.annotation.tailrec
     def factHelper(x: Int, accumulator: BigInt): BigInt =
       if (x <= 1) accumulator
-      else factHelper(x - 1, x * accumulator)
+      else factHelper(x - 1, x * accumulator) // TAIL RECURSION = use recursive call as the LAST expression
 
     factHelper(n, 1)
   }
@@ -37,5 +38,11 @@ object Recursion extends App{
 
   println(anotherFactorial(5000))
 
+  // WHEN YOU NEED LOOPS, USE_TAIL_ RECURSION
 
+  /*
+    1. Concatenate a string n times
+    2. IsPrime function tail recursive
+    3. Fibonacci function
+   */
 }
