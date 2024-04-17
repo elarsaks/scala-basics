@@ -14,23 +14,24 @@ object OOBasics extends App {
 
 
   val shakespeare = new Author(firstName = "William", surName = "Shakespeare", yearOfBirth = 1564)
+  val fakeShakespeare = new Author(firstName = "William", surName = "Shakespeare", yearOfBirth = 1564)
   val hamlet = new Novel("Hamlet", 1601, shakespeare)
 
+  println(hamlet.isWrittenBy(fakeShakespeare))
+
+  val counter = new Counter(0)
+  counter.inc.print
+  counter.inc.inc.inc.print // TODO: Go through the recurion in OOP!
+  counter.inc(10).print
+
+  /*
   println("Author.fullname: " + shakespeare.fullName())
   println("Novel.authorAge: " + hamlet.authorAge())
   println("Novel.isWrittenBy: " + hamlet.isWrittenBy())
   println("Novel.copy: " + hamlet.copy())
+   */
 
-  val counter = new Counter
-  println(counter.currentCount())
-  counter.increment()
-  println(counter.currentCount())
-  counter.decrement()
-  println(counter.currentCount())
-  counter.increment(3)
-  println(counter.currentCount())
-  counter.decrement(2)
-  println(counter.currentCount())
+
 }
 
 class Person(name: String, val age: Int = 0) { // constructor
@@ -81,31 +82,8 @@ class Author (firstName: String= "", surName: String = "", yearOfBirth: Int){
 
 class Novel(name: String, yearOfRelease: Int, author: Author){
   def authorAge(): Int = author.age()
-  def isWrittenBy(): String = author.fullName()
+  def isWrittenBy(author: Author) = author == this.author
   def copy(): Int = yearOfRelease
-}
-
-class Counter(){
-  var count = 0
-
-  def currentCount(): Int = this.count
-  def increment(): Unit = {
-    count = (count + 1)
-  }
-
-  def decrement(): Unit = {
-    count = count - 1
-  }
-
-  // overloading
-  def increment(valueToAdd: Int): Unit = {
-    count = count + valueToAdd
-  }
-
-  def decrement(valueToMinus: Int): Unit = {
-    count = count - valueToMinus
-  }
-
 }
 
 
@@ -117,6 +95,24 @@ class Counter(){
     - overload inc/dec to receive an amount
  */
 
+class Counter(val count: Int){
+  // In FP instances are fixed and cannot be modified inside.
+  // Whenever we need to modify it, we will return a new instance
+
+  def inc = new Counter(count + 1) // immutability
+  def dec = {
+    println("decrementing")
+    new Counter(count - 1)
+  }
+
+  def inc(n: Int) = new Counter(count + n)
+  def dec(n: Int) = {
+    if(n <= 0) this // Return current count
+    else inc.inc(n-1) // Use recursion to decrement
+  }
+
+  def print = println(count)
+}
 
 
 
