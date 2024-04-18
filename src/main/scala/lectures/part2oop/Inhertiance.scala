@@ -1,13 +1,13 @@
 package lectures.part2oop
 
-object InhertianceAndTraits extends App{
+object Inhertiance extends App{
 
   // single class inheritance
   /* final */ class Animal {
     val creatureType ="wild"
 
     // private | protected | public (no modifier) | final (prevent overriding)
-     final def eat = println("nom nom nom")
+    /* final */ def eat = println("nom nom nom")
   }
 
   class Cat extends Animal {
