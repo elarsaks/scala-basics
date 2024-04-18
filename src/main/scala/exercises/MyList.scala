@@ -1,7 +1,6 @@
 package exercises
 
 abstract class MyList {
-
   /*
       head = first element of the list
       tail = remainder of the list

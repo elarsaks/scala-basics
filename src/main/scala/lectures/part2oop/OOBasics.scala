@@ -12,7 +12,6 @@ object OOBasics extends App {
   person.greet("John")
   person.greet()
 
-
   val shakespeare = new Author(firstName = "William", surName = "Shakespeare", yearOfBirth = 1564)
   val fakeShakespeare = new Author(firstName = "William", surName = "Shakespeare", yearOfBirth = 1564)
   val hamlet = new Novel("Hamlet", 1601, shakespeare)
@@ -30,7 +29,6 @@ object OOBasics extends App {
   println("Novel.isWrittenBy: " + hamlet.isWrittenBy())
   println("Novel.copy: " + hamlet.copy())
    */
-
 
 }
 
@@ -85,7 +83,6 @@ class Novel(name: String, yearOfRelease: Int, author: Author){
   def isWrittenBy(author: Author) = author == this.author
   def copy(): Int = yearOfRelease
 }
-
 
 /*
   Counter class
