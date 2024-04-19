@@ -122,9 +122,10 @@ object ListTest extends App {
   }).toString)
 
   println((listOfIntegers ++ anotherListOfIntegers).toString)
-  println(listOfIntegers.flatMap(new MyTransformer[Int, MyList[Int]]{
-    override def transform(elem: Int): MyList[Int] = new Cons(elem + 1, Empty)
-  })).toString
+
+  println(listOfIntegers.flatMap(new MyTransformer[Int, MyList[Int]] {
+    override def transform(elem: Int): MyList[Int] = new Cons(elem, new Cons(elem + 1, Empty))
+  }).toString)
 }
 
 
