@@ -1,5 +1,8 @@
 package lectures.part2oop
-import playground.Cinderella
+import playground.{Cinderella => Princess, PrinceCharming}
+
+import java.util.Date
+import java.sql.{Date => SqlDate}
 
 object packagingAndImports extends App {
 
@@ -8,7 +11,7 @@ object packagingAndImports extends App {
   val writer = new Author("Daniel", "RockTheJVM", 2018)
 
   // import the package
-  val princess = new Cinderella // playground.Cinderella = fully qualified name
+  val princess = new Princess // playground.Cinderella = fully qualified name
 
   // packages are in hierarchy
   // matching folder structure.
@@ -18,4 +21,15 @@ object packagingAndImports extends App {
   println(SPEED_OF_LIGHT)
 
   // imports
+  val prince = new PrinceCharming
+
+  // 1. Use fully qualified named
+  val d = new Date
+  val sqlDate = new SqlDate(2018, 5, 4)
+  // 2. Use aliasing
+
+  // default imports
+  // java.lang - String, Object, Exception
+  // scala - Int, Nothing, Function
+  // scala.Predef - println, ???
 }
