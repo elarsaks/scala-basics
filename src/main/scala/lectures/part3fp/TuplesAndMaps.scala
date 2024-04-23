@@ -53,7 +53,7 @@ object TuplesAndMaps extends App {
       - person with most friends
       - how many people have NO friends
       - if there is a social connection between two people (direct or not)
-    */
+
 
   def add(network: Map[String, Set[String]], Person: String): Map[String, Set[String]] =
     network + (Person -> Set())
@@ -127,5 +127,5 @@ object TuplesAndMaps extends App {
   }
 
   println(socialConnection(testNet, "Mary", "Jim"))
-  println(socialConnection(network, "Mary", "Bob"))
+  println(socialConnection(network, "Mary", "Bob")) */
 }
