@@ -42,9 +42,9 @@ object SocialNetwork extends App {
 
   // Example of how the network is used
   val empty: Map[String, Set[String]] = Map()
-  val initialNetwork = add(add(empty, "Bob"), "Mary")
-  println(initialNetwork)
-  println(friend(initialNetwork, "Bob", "Mary"))
+  val initialNetwork = add(add(empty, "Bob"), "Mary") // Add Bob to empty network, then add mary to the network containing bob
+  println("Intial network: " + initialNetwork)
+  println(friend(initialNetwork, "Bob", "Mary")) // Add Bob to mary friends and vice versa
   println(unfriend(friend(initialNetwork, "Bob", "Mary"), "Bob", "Mary"))
   println(remove(friend(initialNetwork, "Bob", "Mary"), "Bob"))
 
